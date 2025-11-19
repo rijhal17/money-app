@@ -1,0 +1,124 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #f5f5f7;
+}
+
+/* ==== CARD SALDO MIRIP OVO ==== */
+.saldo-card {
+    background: linear-gradient(160deg, #6a1bff, #8d48ff);
+    color: white;
+    padding: 32px 20px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.saldo-card .label {
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.saldo-card h1 {
+    margin: 5px 0 0;
+    font-size: 34px;
+}
+
+/* ==== MENU GRID === */
+.menu-grid {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-item {
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background: #6a1bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(106,27,255,0.4);
+}
+
+.menu-item p {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* ==== INPUT ==== */
+.input-box, .riwayat-box {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #6a1bff;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* ==== TABLE ==== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 6px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+/* tombol hapus */
+.hapus-btn {
+    background: #ff4d67;
+    padding: 5px 8px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==== BOTTOM NAV — MIRIP APLIKASI OVO ==== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+}
+
+.bottom-nav div {
+    cursor: pointer;
+    color: #6a1bff;
+}

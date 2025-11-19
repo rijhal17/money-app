@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6a1bff">
+
+<!-- iPhone support -->
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log("Service Worker Registered"));
+  }
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Note - OVO Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER SALDO -->
+<div class="saldo-card">
+    <p class="label">Total Saldo</p>
+    <h1 id="totalSaldo">Rp 0</h1>
+</div>
+
+<!-- MENU UTAMA -->
+<div class="menu-grid">
+    <div class="menu-item" onclick="openInput()">
+        <div class="icon-circle">+</div>
+        <p>Tambah</p>
+    </div>
+    <div class="menu-item" onclick="openRiwayat()">
+        <div class="icon-circle">📄</div>
+        <p>Riwayat</p>
+    </div>
+    <div class="menu-item" onclick="exportExcel()">
+        <div class="icon-circle">📤</div>
+        <p>Export</p>
+    </div>
+</div>
+
+<!-- INPUT FORM -->
+<div class="input-box" id="inputBox" style="display:none;">
+    <h3>Tambah Transaksi</h3>
+    <input type="date" id="tanggal">
+    <input type="text" id="jumlah" placeholder="Masukkan jumlah">
+
+    <input type="text" id="kategori" placeholder="Kategori">
+    <select id="tipe">
+        <option value="masuk">Pemasukan</option>
+        <option value="keluar">Pengeluaran</option>
+    </select>
+    <button onclick="tambah()">Simpan</button>
+</div>
+
+<!-- RIWAYAT -->
+<div class="riwayat-box" id="riwayatBox" style="display:none;">
+    <h3>Riwayat Transaksi</h3>
+
+    <table id="tabelTransaksi">
+        <thead>
+            <tr>
+                <th>Tgl</th>
+                <th>Kategori</th>
+                <th>Tipe</th>
+                <th>Jumlah</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- NAVIGASI BAWAH -->
+<div class="bottom-nav">
+    <div onclick="openHome()">🏠</div>
+    <div onclick="openInput()">➕</div>
+    <div onclick="openRiwayat()">📄</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
