@@ -1,88 +1,414 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#6a1bff">
-
-<!-- iPhone support -->
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js')
-      .then(() => console.log("Service Worker Registered"));
-  }
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Note - OVO Style</title>
+
+    <title>Kalkulator Plafon PVC PRO</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HEADER SALDO -->
-<div class="saldo-card">
-    <p class="label">Total Saldo</p>
-    <h1 id="totalSaldo">Rp 0</h1>
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div>
+            <h1>PLAFON PVC PRO</h1>
+            <p>Kalkulator kebutuhan rangka & material plafon</p>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">
+            🖨 Cetak
+        </button>
+    </header>
+
+
+    <!-- INPUT UTAMA -->
+    <section class="input-section">
+
+        <div class="section-title">
+            <span>📐</span>
+            <div>
+                <h2>Data Ruangan</h2>
+                <p>Masukkan ukuran ruangan untuk menghitung kebutuhan material.</p>
+            </div>
+        </div>
+
+        <div class="input-grid">
+
+            <div class="input-box">
+                <label>Nama Ruangan</label>
+                <input
+                    type="text"
+                    id="roomName"
+                    value="Ruang Tamu"
+                    placeholder="Contoh: Ruang Tamu">
+            </div>
+
+            <div class="input-box">
+                <label>Panjang Ruangan (meter)</label>
+                <input
+                    type="number"
+                    id="roomLength"
+                    value="6"
+                    min="1"
+                    step="0.01">
+            </div>
+
+            <div class="input-box">
+                <label>Lebar Ruangan (meter)</label>
+                <input
+                    type="number"
+                    id="roomWidth"
+                    value="4"
+                    min="1"
+                    step="0.01">
+            </div>
+
+            <div class="input-box">
+                <label>Lebar PVC</label>
+
+                <select id="pvcWidth">
+                    <option value="20">20 cm</option>
+                    <option value="25">25 cm</option>
+                    <option value="30">30 cm</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <!-- ARAH PVC -->
+        <div class="direction-section">
+
+            <label class="direction-title">
+                Arah Pemasangan PVC
+            </label>
+
+            <div class="direction-buttons">
+
+                <button
+                    class="direction-btn active"
+                    data-direction="horizontal"
+                    onclick="setDirection('horizontal')">
+
+                    <span>↔</span>
+
+                    <div>
+                        <strong>Horizontal</strong>
+                        <small>PVC mengikuti arah panjang</small>
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="direction-btn"
+                    data-direction="vertical"
+                    onclick="setDirection('vertical')">
+
+                    <span>↕</span>
+
+                    <div>
+                        <strong>Vertikal</strong>
+                        <small>PVC mengikuti arah lebar</small>
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="direction-btn"
+                    data-direction="diagonal"
+                    onclick="setDirection('diagonal')">
+
+                    <span>↗</span>
+
+                    <div>
+                        <strong>Diagonal</strong>
+                        <small>PVC dipasang menyilang</small>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PENGATURAN RANGKA -->
+        <div class="setting-title">
+            ⚙ Pengaturan Rangka
+        </div>
+
+        <div class="input-grid">
+
+            <div class="input-box">
+                <label>Jarak Hollow 4×4 Utama (cm)</label>
+                <input
+                    type="number"
+                    id="spacing44"
+                    value="80"
+                    min="30">
+            </div>
+
+            <div class="input-box">
+                <label>Jarak Hollow 2×4 Melintang (cm)</label>
+                <input
+                    type="number"
+                    id="spacing24"
+                    value="40"
+                    min="20">
+            </div>
+
+            <div class="input-box">
+                <label>Jarak Gantungan (cm)</label>
+                <input
+                    type="number"
+                    id="spacingHanger"
+                    value="120"
+                    min="40">
+            </div>
+
+            <div class="input-box">
+                <label>Panjang 1 Batang Hollow</label>
+                <select id="hollowLength">
+                    <option value="4">4 meter</option>
+                    <option value="6">6 meter</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <!-- HARGA -->
+        <div class="setting-title">
+            💰 Harga Material
+        </div>
+
+        <div class="input-grid price-grid">
+
+            <div class="input-box">
+                <label>Harga PVC / lembar</label>
+                <input type="number" id="pricePVC" value="85000">
+            </div>
+
+            <div class="input-box">
+                <label>Harga Hollow 4×4 / batang</label>
+                <input type="number" id="price44" value="65000">
+            </div>
+
+            <div class="input-box">
+                <label>Harga Hollow 2×4 / batang</label>
+                <input type="number" id="price24" value="55000">
+            </div>
+
+            <div class="input-box">
+                <label>Harga Gantungan / pcs</label>
+                <input type="number" id="priceHanger" value="5000">
+            </div>
+
+        </div>
+
+
+        <button class="calculate-btn" onclick="calculate()">
+            🔄 HITUNG KEBUTUHAN MATERIAL
+        </button>
+
+    </section>
+
+
+    <!-- RINGKASAN -->
+    <section class="summary-grid">
+
+        <div class="summary-card">
+            <span>LUAS PLAFON</span>
+            <strong id="resultArea">0 m²</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>KEBUTUHAN PVC</span>
+            <strong id="resultPVC">0 lembar</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>TOTAL HOLLOW</span>
+            <strong id="resultHollow">0 batang</strong>
+        </div>
+
+        <div class="summary-card total">
+            <span>ESTIMASI BIAYA</span>
+            <strong id="resultTotal">Rp 0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- GAMBAR -->
+    <section class="drawing-card">
+
+        <div class="drawing-header">
+
+            <div>
+                <h2>🏗 GAMBAR RANGKA PLAFON</h2>
+
+                <p id="drawingTitle">
+                    RUANG TAMU — 6 × 4 meter
+                </p>
+            </div>
+
+            <div class="drawing-info">
+                <span id="directionText">
+                    Horizontal
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- 3D -->
+        <div class="viewer">
+
+            <div
+                id="threeContainer"
+                class="three-container">
+
+            </div>
+
+            <div class="viewer-help">
+                🖱 Geser mouse untuk memutar
+                <br>
+                📱 Geser dengan jari di HP
+            </div>
+
+        </div>
+
+
+        <!-- LEGENDA -->
+        <div class="legend">
+
+            <div>
+                <i class="legend-main"></i>
+                Hollow 4×4 Utama
+            </div>
+
+            <div>
+                <i class="legend-cross"></i>
+                Hollow 2×4 Melintang
+            </div>
+
+            <div>
+                <i class="legend-pvc"></i>
+                Panel PVC
+            </div>
+
+            <div>
+                <i class="legend-hanger"></i>
+                Gantungan
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HASIL DETAIL -->
+    <section class="detail-card">
+
+        <h2>📋 RINCIAN KEBUTUHAN MATERIAL</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Spesifikasi</th>
+                        <th>Kebutuhan</th>
+                        <th>Harga Satuan</th>
+                        <th>Jumlah</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>PVC</strong></td>
+                        <td id="detailPVCSpec">20 cm</td>
+                        <td id="detailPVC">0 lembar</td>
+                        <td id="detailPVCPrice">Rp 0</td>
+                        <td id="detailPVCTotal">Rp 0</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Hollow 4×4</strong></td>
+                        <td id="detail44Spec">Jarak 80 cm</td>
+                        <td id="detail44">0 batang</td>
+                        <td id="detail44Price">Rp 0</td>
+                        <td id="detail44Total">Rp 0</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Hollow 2×4</strong></td>
+                        <td id="detail24Spec">Jarak 40 cm</td>
+                        <td id="detail24">0 batang</td>
+                        <td id="detail24Price">Rp 0</td>
+                        <td id="detail24Total">Rp 0</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Gantungan</strong></td>
+                        <td id="detailHangerSpec">Jarak 120 cm</td>
+                        <td id="detailHanger">0 pcs</td>
+                        <td id="detailHangerPrice">Rp 0</td>
+                        <td id="detailHangerTotal">Rp 0</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="grand-total">
+
+            <span>TOTAL ESTIMASI MATERIAL</span>
+
+            <strong id="grandTotal">
+                Rp 0
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- PERHITUNGAN -->
+    <section class="calculation-card">
+
+        <h2>🧮 DETAIL PERHITUNGAN</h2>
+
+        <div id="calculationText"></div>
+
+    </section>
+
+
+    <footer>
+        Kalkulator Plafon PVC PRO
+    </footer>
+
 </div>
 
-<!-- MENU UTAMA -->
-<div class="menu-grid">
-    <div class="menu-item" onclick="openInput()">
-        <div class="icon-circle">+</div>
-        <p>Tambah</p>
-    </div>
-    <div class="menu-item" onclick="openRiwayat()">
-        <div class="icon-circle">📄</div>
-        <p>Riwayat</p>
-    </div>
-    <div class="menu-item" onclick="exportExcel()">
-        <div class="icon-circle">📤</div>
-        <p>Export</p>
-    </div>
-</div>
 
-<!-- INPUT FORM -->
-<div class="input-box" id="inputBox" style="display:none;">
-    <h3>Tambah Transaksi</h3>
-    <input type="date" id="tanggal">
-    <input type="text" id="jumlah" placeholder="Masukkan jumlah">
-
-    <input type="text" id="kategori" placeholder="Kategori">
-    <select id="tipe">
-        <option value="masuk">Pemasukan</option>
-        <option value="keluar">Pengeluaran</option>
-    </select>
-    <button onclick="tambah()">Simpan</button>
-</div>
-
-<!-- RIWAYAT -->
-<div class="riwayat-box" id="riwayatBox" style="display:none;">
-    <h3>Riwayat Transaksi</h3>
-
-    <table id="tabelTransaksi">
-        <thead>
-            <tr>
-                <th>Tgl</th>
-                <th>Kategori</th>
-                <th>Tipe</th>
-                <th>Jumlah</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
-
-<!-- NAVIGASI BAWAH -->
-<div class="bottom-nav">
-    <div onclick="openHome()">🏠</div>
-    <div onclick="openInput()">➕</div>
-    <div onclick="openRiwayat()">📄</div>
-</div>
+<!-- THREE.JS -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
 <script src="script.js"></script>
+
 </body>
 </html>

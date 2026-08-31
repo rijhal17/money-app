@@ -1,124 +1,570 @@
-body {
-    font-family: 'Poppins', sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
-    background: #f5f5f7;
+    padding: 0;
 }
 
-/* ==== CARD SALDO MIRIP OVO ==== */
-.saldo-card {
-    background: linear-gradient(160deg, #6a1bff, #8d48ff);
-    color: white;
-    padding: 32px 20px;
-    text-align: center;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f7;
+    color: #172033;
 }
 
-.saldo-card .label {
-    opacity: 0.8;
-    letter-spacing: 1px;
-}
-
-.saldo-card h1 {
-    margin: 5px 0 0;
-    font-size: 34px;
-}
-
-/* ==== MENU GRID === */
-.menu-grid {
-    margin: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.menu-item {
-    text-align: center;
-    cursor: pointer;
-}
-
-.icon-circle {
-    width: 60px;
-    height: 60px;
-    background: #6a1bff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: white;
-    font-size: 22px;
-    box-shadow: 0 4px 12px rgba(106,27,255,0.4);
-}
-
-.menu-item p {
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-/* ==== INPUT ==== */
-.input-box, .riwayat-box {
-    margin: 20px;
+.app {
+    width: min(1400px, 100%);
+    margin: auto;
     padding: 20px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
 
-button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    background: #6a1bff;
+/* HEADER */
+
+.header {
+    background: linear-gradient(135deg, #102a56, #1769aa);
     color: white;
-    font-weight: bold;
-    font-size: 15px;
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
 }
 
-/* ==== TABLE ==== */
-table {
-    width: 100%;
-    border-collapse: collapse;
+.header h1 {
+    font-size: 25px;
+    margin-bottom: 6px;
 }
 
-th, td {
-    padding: 10px 6px;
-    border-bottom: 1px solid #eee;
+.header p {
+    opacity: .85;
     font-size: 13px;
 }
 
-/* tombol hapus */
-.hapus-btn {
-    background: #ff4d67;
-    padding: 5px 8px;
-    border-radius: 6px;
-    color: white;
+.print-btn {
+    border: 0;
+    background: white;
+    color: #123c70;
+    padding: 11px 18px;
+    border-radius: 9px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* ==== BOTTOM NAV — MIRIP APLIKASI OVO ==== */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
-    padding: 12px 0;
+
+/* SECTION */
+
+.input-section,
+.drawing-card,
+.detail-card,
+.calculation-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 5px 18px rgba(20,40,70,.07);
+}
+
+.section-title {
     display: flex;
-    justify-content: space-around;
-    font-size: 24px;
+    gap: 12px;
+    margin-bottom: 18px;
 }
 
-.bottom-nav div {
+.section-title > span {
+    font-size: 25px;
+}
+
+.section-title h2 {
+    font-size: 18px;
+}
+
+.section-title p {
+    font-size: 12px;
+    color: #68768a;
+    margin-top: 4px;
+}
+
+
+/* INPUT */
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.input-box label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #45546a;
+}
+
+.input-box input,
+.input-box select {
+    width: 100%;
+    border: 1px solid #d2dae4;
+    border-radius: 9px;
+    padding: 11px;
+    outline: none;
+    background: #fff;
+    font-size: 14px;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+    border-color: #1769aa;
+    box-shadow: 0 0 0 3px rgba(23,105,170,.1);
+}
+
+
+/* DIRECTION */
+
+.direction-section {
+    margin-top: 20px;
+}
+
+.direction-title {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+.direction-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.direction-btn {
+    border: 1px solid #d6dee8;
+    background: #fff;
+    padding: 13px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
-    color: #6a1bff;
+    text-align: left;
+}
+
+.direction-btn > span {
+    font-size: 25px;
+    color: #1b66d1;
+}
+
+.direction-btn strong {
+    display: block;
+    font-size: 13px;
+}
+
+.direction-btn small {
+    display: block;
+    color: #7b8796;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.direction-btn.active {
+    border: 2px solid #1769aa;
+    background: #edf6ff;
+}
+
+
+/* SETTING */
+
+.setting-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 22px 0 10px;
+    color: #203b61;
+}
+
+
+/* BUTTON */
+
+.calculate-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1265c8, #1687db);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.calculate-btn:hover {
+    filter: brightness(1.05);
+}
+
+
+/* SUMMARY */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 13px;
+    padding: 18px;
+    box-shadow: 0 5px 18px rgba(20,40,70,.07);
+}
+
+.summary-card span {
+    display: block;
+    font-size: 10px;
+    color: #7a8798;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.summary-card strong {
+    font-size: 20px;
+    color: #183e70;
+}
+
+.summary-card.total {
+    background: linear-gradient(135deg, #102a56, #1769aa);
+}
+
+.summary-card.total span,
+.summary-card.total strong {
+    color: white;
+}
+
+
+/* DRAWING */
+
+.drawing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.drawing-header h2 {
+    font-size: 18px;
+}
+
+.drawing-header p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #6d7989;
+}
+
+.drawing-info {
+    background: #edf5ff;
+    color: #1769aa;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+/* 3D VIEWER */
+
+.viewer {
+    position: relative;
+    background:
+        radial-gradient(circle at center, #263a52, #0d1725);
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 570px;
+}
+
+.three-container {
+    width: 100%;
+    height: 570px;
+}
+
+.three-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.viewer-help {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    background: rgba(0,0,0,.55);
+    color: white;
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 10px;
+    line-height: 1.6;
+    pointer-events: none;
+}
+
+
+/* LEGEND */
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 14px;
+    font-size: 11px;
+    color: #536176;
+}
+
+.legend div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend i {
+    display: inline-block;
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+}
+
+.legend-main {
+    background: #1653db;
+}
+
+.legend-cross {
+    background: #777;
+}
+
+.legend-pvc {
+    background: #dcefff;
+    border: 1px solid #4c9bd8;
+}
+
+.legend-hanger {
+    width: 10px !important;
+    height: 10px !important;
+    border: 2px solid #e52525;
+    border-radius: 50%;
+    background: white;
+}
+
+
+/* TABLE */
+
+.detail-card h2,
+.calculation-card h2 {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th {
+    background: #183b68;
+    color: white;
+    padding: 11px;
+    text-align: left;
+    font-size: 11px;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e5e9ef;
+    font-size: 12px;
+}
+
+td strong {
+    color: #183b68;
+}
+
+
+/* TOTAL */
+
+.grand-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #edf6ff;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.grand-total span {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.grand-total strong {
+    color: #1265c8;
+    font-size: 21px;
+}
+
+
+/* CALCULATION */
+
+#calculationText {
+    background: #f7f9fc;
+    border-left: 4px solid #1769aa;
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.calc-line {
+    border-bottom: 1px dashed #d8dee7;
+    padding: 5px 0;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #8793a3;
+    padding: 15px;
+    font-size: 11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px) {
+
+    .input-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .direction-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .viewer,
+    .three-container {
+        min-height: 450px;
+        height: 450px;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 17px;
+    }
+
+    .header h1 {
+        font-size: 19px;
+    }
+
+    .header p {
+        font-size: 10px;
+    }
+
+    .print-btn {
+        padding: 9px;
+        font-size: 10px;
+    }
+
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .summary-card {
+        padding: 13px;
+    }
+
+    .summary-card strong {
+        font-size: 16px;
+    }
+
+    .drawing-card,
+    .input-section,
+    .detail-card,
+    .calculation-card {
+        padding: 14px;
+    }
+
+    .drawing-header {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .drawing-header h2 {
+        font-size: 14px;
+    }
+
+    .drawing-info {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+    .viewer,
+    .three-container {
+        min-height: 390px;
+        height: 390px;
+    }
+}
+
+
+/* PRINT */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .app {
+        padding: 0;
+    }
+
+    .print-btn,
+    .calculate-btn,
+    .direction-section,
+    .setting-title {
+        display: none;
+    }
+
+    .viewer {
+        height: 500px;
+    }
+
+    .three-container {
+        height: 500px;
+    }
+
+    .input-section,
+    .drawing-card,
+    .detail-card,
+    .calculation-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
 }
